@@ -16,6 +16,74 @@
                 <small>STUDENT WORKSPACE</small>
             </div>
         </section>
+        
+<section class="dashboard-panel dashboard-schedule-panel">
+
+    <div class="dashboard-panel-heading">
+        <div>
+            <p class="dashboard-panel-kicker">YOUR SCHEDULE</p>
+            <h2>Academic Schedule</h2>
+            <p>Agenda akademik terdekat milikmu.</p>
+        </div>
+
+        <span class="dashboard-panel-symbol" aria-hidden="true">
+            CAL
+        </span>
+    </div>
+
+    @forelse($upcomingEvents as $event)
+
+        <div class="dashboard-action-row">
+            <span class="dashboard-row-icon" aria-hidden="true">
+                {{ $event->start_at->format('d') }}
+            </span>
+
+            <span class="dashboard-row-copy">
+                <strong>{{ $event->title }}</strong>
+
+                <small>
+                    {{ $event->start_at->translatedFormat('l, d F Y') }}
+                    · {{ $event->start_at->format('H:i') }}
+
+                    @if($event->end_at)
+                        - {{ $event->end_at->format('H:i') }}
+                    @endif
+                </small>
+
+                <small>
+                    {{ ucfirst($event->type) }}
+
+                    @if($event->course)
+                        · {{ $event->course }}
+                    @endif
+
+                    @if($event->location)
+                        · {{ $event->location }}
+                    @endif
+                </small>
+            </span>
+
+            <span class="dashboard-row-arrow" aria-hidden="true">
+                →
+            </span>
+        </div>
+
+    @empty
+
+        <div class="dashboard-schedule-empty">
+            <strong>Belum ada jadwal mendatang.</strong>
+            <p>Tambahkan agenda akademik agar jadwalmu muncul di sini.</p>
+        </div>
+
+    @endforelse
+
+    <div class="dashboard-panel-footer">
+        <a href="{{ route('academic-events.index') }}">
+            Lihat semua agenda →
+        </a>
+    </div>
+
+</section>
 
         <section class="dashboard-section-heading">
             <div>
@@ -24,7 +92,7 @@
             </div>
             <p class="dashboard-section-note">Semua kebutuhan kuliah, lebih teratur.</p>
         </section>
-
+        
         <section class="dashboard-v2-grid">
             <div class="dashboard-panel dashboard-task-panel">
                 <div class="dashboard-panel-heading">
@@ -89,6 +157,17 @@
                     <h2>Catatan Kuliah</h2>
                     <p>Simpan dan buka kembali materi kuliah dengan mudah.</p>
                     <span class="dashboard-feature-link">Buka catatan <span aria-hidden="true">→</span></span>
+                </a>
+
+                <a href="{{ route('academic-events.index') }}" class="dashboard-feature-card dashboard-feature-notes">
+                    <div class="dashboard-feature-topline">
+                        <span class="dashboard-feature-icon" aria-hidden="true">K</span>
+                        <span class="dashboard-feature-arrow" aria-hidden="true">↗</span>
+                    </div>
+                    <p class="dashboard-feature-label">ACADEMIC CALENDAR</p>
+                    <h2>Kalender Akademik</h2>
+                    <p>Kelola jadwal kuliah, ujian, seminar,dan agenda akademik lainnya..</p>
+                    <span class="dashboard-feature-link">Buka kalender<span aria-hidden="true">→</span></span>
                 </a>
             </aside>
         </section>

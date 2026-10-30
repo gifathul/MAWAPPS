@@ -841,138 +841,266 @@ body {
     }
 }
 
-
-/* NAVBAR MAWAPPS */
+/* ==========================================
+   MAWAPPS - SIDEBAR NAVIGATION
+========================================== */
 
 .maw-navbar {
-    width: 90%;
-    max-width: 1200px;
-    margin: 24px auto;
-    padding: 12px 18px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    width: 250px;
+    height: 100vh;
+    padding: 30px 20px;
+
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    background: #111;
-    border: 1px solid #333;
-    border-radius: 18px;
-    color: #fff;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 35px;
+
+    overflow-y: auto;
+
+    background: #111111;
+    border-right: 1px solid #333333;
+    color: #ffffff;
 }
 
+/* BRAND */
+
 .maw-brand {
-    color: #fff;
-    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 5px 10px 25px;
+
+    color: #ffffff;
+    font-size: 23px;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     text-decoration: none;
-    white-space: nowrap;
+
+    border-bottom: 1px solid #333333;
+}
+
+.maw-brand small {
+    color: #888888;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+/* MENU */
+
+.maw-nav-section {
+    width: 100%;
+}
+
+.maw-nav-heading {
+    margin: 0 0 13px 12px;
+    color: #777777;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 .maw-nav-links {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
 }
 
 .maw-nav-links a {
-    padding: 10px 14px;
-    border-radius: 10px;
-    color: #ccc;
-    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    width: 100%;
+    padding: 14px 15px;
+
+    color: #cccccc;
+    font-size: 14px;
     text-decoration: none;
-    transition: .2s ease;
+    border-radius: 10px;
+
+    transition: .25s ease;
 }
 
 .maw-nav-links a:hover {
     background: #292929;
-    color: #fff;
+    color: #ffffff;
 }
 
 .maw-nav-links a.active {
-    background: #fff;
-    color: #000;
+    background: #ffffff;
+    color: #000000;
     font-weight: 700;
 }
 
+/* ICON */
+
+.maw-nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    font-size: 19px;
+}
+
+/* USER */
+
 .maw-nav-user {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    margin-top: auto;
+    padding-top: 20px;
+
+    border-top: 1px solid #333333;
+}
+
+.maw-user-info {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.maw-nav-user span {
-    color: #ddd;
-    font-size: 13px;
+.maw-user-avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    color: #111111;
+    background: #ffffff;
+    border-radius: 50%;
+    font-weight: 700;
 }
+
+.maw-user-name {
+    color: #dddddd;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* LOGOUT */
 
 .maw-nav-user form {
     margin: 0;
 }
 
 .maw-nav-user button {
-    padding: 9px 14px;
-    border: 1px solid #555;
-    border-radius: 10px;
+    width: 100%;
+    padding: 12px;
+
+    color: #ffffff;
     background: transparent;
-    color: #fff;
-    font: inherit;
+    border: 1px solid #555555;
+    border-radius: 10px;
+
+    font-family: inherit;
     font-size: 13px;
     cursor: pointer;
-    transition: .2s ease;
+
+    transition: .25s ease;
 }
 
 .maw-nav-user button:hover {
-    background: #fff;
-    color: #000;
+    color: #000000;
+    background: #ffffff;
 }
+
+/* ==========================================
+   DASHBOARD CONTENT
+========================================== */
+
+.dashboard-v2 {
+    width: auto;
+    max-width: 1200px;
+    min-width: 0;
+    margin: 38px 35px 55px 285px;
+}
+
+/* Mencegah elemen dashboard melebar */
+
+.dashboard-v2 > *,
+.dashboard-v2-grid,
+.dashboard-panel,
+.dashboard-side-column,
+.dashboard-welcome-panel {
+    min-width: 0;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
 
 @media (max-width: 850px) {
     .maw-navbar {
-        flex-wrap: wrap;
-        border-radius: 16px;
+        width: 210px;
+        padding: 25px 14px;
+    }
+
+    .dashboard-v2 {
+        margin-left: 235px;
+        margin-right: 20px;
+    }
+
+    .dashboard-v2-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+    .maw-navbar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: auto;
+
+        padding: 18px;
+        gap: 18px;
+
+        overflow: visible;
+
+        border-right: none;
+        border-bottom: 1px solid #333333;
     }
 
     .maw-nav-links {
-        order: 3;
-        width: 100%;
-    }
-
-    .maw-nav-user {
-        margin-left: auto;
-    }
-}
-
-@media (max-width: 500px) {
-    .maw-navbar {
-        width: 94%;
-        padding: 14px;
-        gap: 14px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .maw-nav-links a {
-        padding: 9px 10px;
+        padding: 12px 10px;
         font-size: 12px;
     }
 
-    .maw-nav-user span {
-        max-width: 90px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+    .maw-nav-user {
+        margin-top: 5px;
+    }
+
+    .dashboard-v2 {
+        width: 92%;
+        margin: 25px auto 40px;
     }
 }
-
 
 /* =========================
    DASHBOARD MAWAPPS - LAYOUT BARU
    Tema hitam-putih dipertahankan
 ========================= */
-.dashboard-v2 {
-    width: 90%;
-    max-width: 1200px;
-    margin: 38px auto 55px;
-}
 
 .dashboard-welcome-panel {
     position: relative;
@@ -1384,5 +1512,117 @@ body {
     .dashboard-bottom-note {
         align-items: flex-start;
         flex-direction: column;
+    }
+}
+
+C
+/* ================================
+   DASHBOARD ACADEMIC SCHEDULE
+================================ */
+
+.dashboard-schedule-panel {
+    margin-bottom: 28px;
+}
+
+.dashboard-schedule-panel .dashboard-panel-heading {
+    margin-bottom: 20px;
+}
+
+.dashboard-schedule-panel .dashboard-action-row {
+    text-decoration: none;
+    border-top: 1px solid #eeeeee;
+    padding: 18px 0;
+}
+
+.dashboard-schedule-panel .dashboard-row-icon {
+    min-width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #000000;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.dashboard-schedule-panel .dashboard-row-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dashboard-schedule-panel .dashboard-row-copy strong {
+    color: #111;
+    font-size: 14px;
+}
+
+.dashboard-schedule-panel .dashboard-row-copy small {
+    color: #777;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.dashboard-schedule-empty {
+    padding: 25px 10px;
+    border-top: 1px solid #eee;
+}
+
+.dashboard-schedule-empty strong {
+    font-size: 14px;
+}
+
+.dashboard-schedule-empty p {
+    color: #888;
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.dashboard-schedule-panel .dashboard-panel-footer a {
+    color: #111;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dashboard-schedule-panel .dashboard-panel-footer a:hover {
+    text-decoration: underline;
+}
+
+/* =================================
+   FIX LAYOUT SIDEBAR MAWAPPS
+================================= */
+
+.notes-page,
+.note-form-page,
+.tasks-page,
+.task-form-page,
+.academic-page {
+    width: auto;
+    max-width: 1200px;
+    margin: 35px 35px 55px 285px;
+}
+
+/* Tablet */
+@media (max-width: 850px) {
+    .notes-page,
+    .note-form-page,
+    .tasks-page,
+    .task-form-page,
+    .academic-page {
+        margin-left: 235px;
+        margin-right: 20px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .notes-page,
+    .note-form-page,
+    .tasks-page,
+    .task-form-page,
+    .academic-page {
+        width: 92%;
+        margin: 25px auto 40px;
     }
 }

@@ -1,6 +1,6 @@
 
 <x-app-layout>
-
+  @include('layouts.navbar')
     <main class="notes-page">
         <div class="notes-header">
             <div>

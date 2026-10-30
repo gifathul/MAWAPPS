@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Note;
 use App\Models\Task;
+use App\Models\AcademicEvent;
 
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
@@ -35,5 +36,9 @@ class User extends Authenticatable {
 }
     public function tasks(): HasMany {
         return $this->hasMany(Task::class);
+}
+    public function academicEvents(): HasMany
+{
+    return $this->hasMany(AcademicEvent::class);
 }
 }

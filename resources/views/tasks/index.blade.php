@@ -1,4 +1,5 @@
 <x-app-layout>
+  @include('layouts.navbar')
     <main class="tasks-page">
         <div class="tasks-header">
             <div>
